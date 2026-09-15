@@ -13,7 +13,7 @@ export function HeroScene() {
       <SceneLights />
       <ParticleField />
       <AuroraBlob position={[2.4, 0.55, -0.9]} scale={1.25} />
-      <fog attach="fog" args={["#0a0a0b", 7, 15]} />
+      <fog attach="fog" args={["#000000", 7, 15]} />
     </>
   );
 }

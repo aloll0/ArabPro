@@ -6,15 +6,17 @@
    Everything below maps into Tailwind utilities via @theme.
    ──────────────────────────────────────────────────────────────── */
 :root {
-  /* Palette — minimal dark, warm ivory text, one hot accent */
-  --background: #0a0a0b;
-  --surface: #121214;
-  --surface-2: #1a1a1e;
-  --foreground: #e9e7e2;
+  /* Palette — Pure Black background, pure white typography, lilac primary accent, volt secondary accent */
+  --background: #000000;
+  --surface: #060606;
+  --surface-2: #0f0f0f;
+  --foreground: #ffffff;
   --muted-foreground: #8f8d95;
-  --border: rgba(233, 231, 226, 0.1);
-  --accent: #ff4d00;
-  --accent-foreground: #0a0a0b;
+  --border: rgba(181, 126, 220, 0.15);
+  --accent: #b57edc;
+  --accent-foreground: #000000;
+  --accent-secondary: #c6ff00;
+  --accent-secondary-foreground: #000000;
   --destructive: #ff3b30;
 
   /* Shape */
@@ -41,6 +43,8 @@
   --color-border: var(--border);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-accent-secondary: var(--accent-secondary);
+  --color-accent-secondary-foreground: var(--accent-secondary-foreground);
   --color-destructive: var(--destructive);
 
   --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;

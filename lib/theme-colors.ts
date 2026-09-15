@@ -13,7 +13,8 @@ export function getCssColor(variable: string, fallback: string): string {
 }
 
 export const themeColors = {
-  accent: () => getCssColor("--accent", "#ff4d00"),
-  foreground: () => getCssColor("--foreground", "#e9e7e2"),
-  background: () => getCssColor("--background", "#0a0a0b"),
+  accent: () => getCssColor("--accent", "#b57edc"),
+  accentSecondary: () => getCssColor("--accent-secondary", "#c6ff00"),
+  foreground: () => getCssColor("--foreground", "#ffffff"),
+  background: () => getCssColor("--background", "#000000"),
 };

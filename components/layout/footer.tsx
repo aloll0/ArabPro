@@ -8,6 +8,8 @@ import { Reveal } from "@/components/motion/reveal";
 import { SplitTextReveal } from "@/components/motion/split-text-reveal";
 import { Magnetic } from "@/components/motion/magnetic";
 
+import { FullLogo } from "@/components/ui/logo";
+
 /** Footer with a big final CTA, socials and back-to-top. */
 export function Footer() {
   const year = new Date().getFullYear();
@@ -45,8 +47,8 @@ export function Footer() {
 
         <div className="mt-24 grid gap-10 border-t border-border pt-10 md:grid-cols-4">
           <div className="md:col-span-2">
-            <p className="font-display text-xl italic">{siteConfig.name}</p>
-            <p className="mt-3 max-w-sm text-sm text-muted-foreground">
+            <FullLogo width={230} className="mb-4" />
+            <p className="max-w-sm text-sm text-muted-foreground">
               {siteConfig.tagline}. {siteConfig.location}.
             </p>
           </div>

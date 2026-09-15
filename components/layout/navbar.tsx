@@ -6,6 +6,8 @@ import { useAppStore } from "@/lib/store";
 import { TransitionLink } from "@/components/layout/page-transition";
 import { MenuOverlay } from "@/components/layout/menu-overlay";
 
+import { FullLogo } from "@/components/ui/logo";
+
 /**
  * Fixed navbar: wordmark left, menu trigger right.
  * The real navigation lives in the fullscreen `<MenuOverlay>`.
@@ -16,15 +18,19 @@ export function Navbar() {
   return (
     <>
       <header className="fixed inset-x-0 top-0 z-[100]">
-        <div className="container-x flex h-20 items-center justify-between">
+        <div className="container-x flex h-24 items-center justify-between">
           <TransitionLink
             href="/"
             onClick={() => setMenuOpen(false)}
             data-cursor="hover"
-            className="font-display text-xl italic tracking-wide mix-blend-difference"
+            className="group flex items-center py-2 mix-blend-difference"
             aria-label={`${siteConfig.name} — home`}
           >
-            {siteConfig.name}
+            <FullLogo
+              width={220}
+              priority
+              className="transition-transform duration-300 group-hover:scale-105"
+            />
           </TransitionLink>
 
           <button

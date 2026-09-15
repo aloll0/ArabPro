@@ -5,6 +5,8 @@ import { gsap, useGSAP, EASE } from "@/lib/gsap";
 import { useAppStore } from "@/lib/store";
 import { siteConfig } from "@/content/site.config";
 
+import { FullLogo } from "@/components/ui/logo";
+
 const MIN_DURATION = 1.6; // seconds — the loader never flashes away instantly
 
 /**
@@ -115,12 +117,14 @@ export function Preloader() {
       </div>
       <div
         ref={contentRef}
-        className="container-x flex flex-1 flex-col items-center justify-center gap-6"
+        className="container-x flex flex-1 flex-col items-center justify-center gap-6 text-center"
       >
-        <span className="font-display text-2xl italic tracking-wide">
-          {siteConfig.name}
-        </span>
-        <p className="text-label">{siteConfig.tagline}</p>
+        <FullLogo
+          width={300}
+          priority
+          className="mb-2 drop-shadow-[0_0_40px_rgba(181,126,220,0.5)]"
+        />
+        <p className="text-label text-muted-foreground">{siteConfig.tagline}</p>
       </div>
       <div className="container-x flex items-end justify-between pb-10">
         <span className="text-label">Loading experience</span>

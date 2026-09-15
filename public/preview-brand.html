@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Logo & Palette Preview</title>
+  <style>
+    body {
+      background: #000000;
+      color: #ffffff;
+      font-family: system-ui, -apple-system, sans-serif;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+    .card {
+      background: #080808;
+      border: 1px solid rgba(181, 126, 220, 0.2);
+      border-radius: 12px;
+      padding: 30px;
+      width: 100%;
+      max-width: 650px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+    .palette {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    .swatch {
+      width: 80px;
+      height: 80px;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 8px;
+      font-size: 11px;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+  </style>
+</head>
+<body>
+  <h1>Brand Colors & Full Logo Preview</h1>
+  
+  <div class="card">
+    <h3>Full Brand Logo (Original Asset)</h3>
+    <div style="background: #000000; padding: 24px; border-radius: 8px; border: 1px solid #1a1a1a;">
+      <img src="/brand-logo.png" alt="Full Brand Logo" style="max-width: 380px; width: 100%; height: auto;" />
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Brand Colors</h3>
+    <div class="palette">
+      <div class="swatch" style="background:#b57edc; color:#000000;">#b57edc<br>Lilac</div>
+      <div class="swatch" style="background:#ffffff; color:#000000;">#ffffff<br>White</div>
+      <div class="swatch" style="background:#000000; color:#ffffff; border-color:#b57edc;">#000000<br>Black</div>
+      <div class="swatch" style="background:#c6ff00; color:#000000;">#c6ff00<br>Volt Lime</div>
+    </div>
+  </div>
+</body>
+</html>

@@ -32,7 +32,7 @@ export const caseStudies: CaseStudy[] = [
     services: ["Art Direction", "WebGL", "Creative Development"],
     cover: "/covers/nova-films.svg",
     gallery: ["/covers/nova-films-1.svg", "/covers/nova-films-2.svg"],
-    accent: "#ff4d00",
+    accent: "#b57edc",
     tagline: "A portfolio that plays like a title sequence",
     intro:
       "Nova Films produces commercials and short films with an obsessive eye for light. Their site needed to feel like their showreel: dark, tactile, impossible to skim without stopping.",

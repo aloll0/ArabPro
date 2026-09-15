@@ -8,27 +8,26 @@
 
 export const siteConfig = {
   /** Brand name — used in navbar, footer, metadata, OG image */
-  name: "AETHER",
+  name: "ARAB PRO",
   /** Legal / long-form name for JSON-LD */
-  legalName: "Aether Studio",
+  legalName: "ARAB PRO",
   /** One-line positioning, shown in hero + metadata */
   tagline: "Digital experiences with a cinematic soul",
   /** SEO description */
   description:
-    "Aether is an award-winning creative studio crafting cinematic websites, real-time 3D and brand experiences for ambitious companies.",
+    "ARAB PRO is an award-winning creative studio crafting cinematic websites, real-time 3D and brand experiences for ambitious companies.",
   /** Production URL — used for canonical, sitemap, OG */
-  url: "https://aether-boilerplate.vercel.app",
+  url: "https://arab-pro.com",
   /** Contact */
-  email: "hello@aether.studio",
-  location: "Milan — Working worldwide",
+  email: "[EMAIL_ADDRESS]",
+  location: "Saudi Arabia — Riyadh",
   /** Founded year, shown in footer */
-  since: 2018,
+  since: 2026,
 
   nav: [
     { label: "Work", href: "/work" },
     { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
-    { label: "Design System", href: "/design-system" },
   ] as const,
 
   socials: [

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 140" fill="none">
+  <!-- Falcon Head + Top Bar -->
+  <path d="M 15 48
+           H 78
+           C 85 45, 92 36, 88 28
+           C 86 24, 76 25, 70 24
+           C 65 23, 62 20, 68 15
+           C 74 10, 85 4, 102 3
+           C 125 2, 142 16, 134 38
+           C 130 46, 140 48, 148 48
+           H 225
+           V 62
+           H 15
+           Z" fill="#b57edc"/>
+  <!-- Falcon Eye Cutout -->
+  <path d="M 82 14
+           C 88 11, 98 10, 106 12
+           L 102 18
+           C 95 19, 88 19, 84 17
+           Z" fill="#000000"/>
+  <path d="M 94 13
+           C 98 13, 101 15, 100 17
+           C 99 18, 96 17, 94 16
+           Z" fill="#b57edc"/>
+  <!-- Middle Bar -->
+  <rect x="15" y="70" width="210" height="14" rx="1" fill="#b57edc" />
+  <!-- Bottom Bar -->
+  <rect x="15" y="92" width="210" height="14" rx="1" fill="#b57edc" />
+  <!-- Diamond Dot below -->
+  <polygon points="112,114 122,124 112,134 102,124" fill="#b57edc" />
+</svg>

@@ -13,7 +13,7 @@ const outDir = join(root, "public", "covers");
 mkdirSync(outDir, { recursive: true });
 
 const PROJECTS = [
-  { slug: "nova-films", a: "#ff4d00", b: "#ff9d66", shape: "ring" },
+  { slug: "nova-films", a: "#b57edc", b: "#c6ff00", shape: "ring" },
   { slug: "klar-audio", a: "#7d5cff", b: "#c3b5ff", shape: "bars" },
   { slug: "orbital-festival", a: "#b8ff2e", b: "#5aff8f", shape: "orbit" },
   { slug: "maison-huit", a: "#ff2e63", b: "#ff9db8", shape: "arc" },
