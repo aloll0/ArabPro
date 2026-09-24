@@ -83,6 +83,26 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     overflow-x: clip;
+    cursor:
+      url("/eagle-cursor-32.png") 1 15,
+      auto;
+  }
+
+  /* When the smooth custom eagle cursor is active, hide native cursor on pointer devices */
+  @media (hover: hover) and (pointer: fine) {
+    body.has-custom-cursor,
+    body.has-custom-cursor a,
+    body.has-custom-cursor button,
+    body.has-custom-cursor [role="button"],
+    body.has-custom-cursor [data-cursor] {
+      cursor: none !important;
+    }
+
+    body.has-custom-cursor input[type="text"],
+    body.has-custom-cursor input[type="email"],
+    body.has-custom-cursor textarea {
+      cursor: text !important;
+    }
   }
 
   ::selection {

@@ -34,7 +34,6 @@ export const siteConfig = {
     { label: "Instagram", href: "https://instagram.com" },
     { label: "X / Twitter", href: "https://x.com" },
     { label: "LinkedIn", href: "https://linkedin.com" },
-    { label: "Awwwards", href: "https://awwwards.com" },
   ] as const,
 
   hero: {

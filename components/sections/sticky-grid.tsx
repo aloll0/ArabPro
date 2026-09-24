@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { gsap, ScrollTrigger, SplitText } from "@/lib/gsap";
+import { Volume2, VolumeX } from "lucide-react";
 
 const images = [
   {
@@ -132,13 +133,17 @@ const images = [
   },
 ];
 
-const targetImage = {
-  src: "https://images.unsplash.com/photo-1443527394413-4b820fd08dde?q=80&w=2338&auto=format&fit=crop",
+const targetMedia = {
+  src: "/videos/national-day.mp4",
+  fallbackSrc:
+    "https://videos.themiify.com/api/videos/04dc9218-728b-4fe0-b9ef-358e5c36fe87/stream?accessToken=695c1a7e871a0ec58f6d0b8a9bd5db48",
   left: "40%",
   width: "20%",
   mLeft: "15%",
   mWidth: "70%",
 };
+
+const targetImage = targetMedia;
 
 const visionData = [
   {
@@ -165,6 +170,27 @@ export function StickyGrid() {
   const containerRef = useRef<HTMLDivElement>(null);
   const pinWrapperRef = useRef<HTMLDivElement>(null);
   const targetRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isMuted, setIsMuted] = useState(true);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = true;
+      videoRef.current.play().catch(() => {});
+    }
+  }, []);
+
+  const toggleSound = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (videoRef.current) {
+      const nextMuted = !videoRef.current.muted;
+      videoRef.current.muted = nextMuted;
+      setIsMuted(nextMuted);
+      if (videoRef.current.paused) {
+        videoRef.current.play().catch(() => {});
+      }
+    }
+  };
 
   useLayoutEffect(() => {
     if (!containerRef.current) return;
@@ -334,17 +360,44 @@ export function StickyGrid() {
             height: "40vh",
           }}
         >
-          <img
-            src={targetImage.src}
-            alt="Featured Architecture"
+          <video
+            ref={videoRef}
+            autoPlay
+            loop
+            muted={isMuted}
+            playsInline
+            preload="auto"
             className="w-full h-full object-cover block absolute inset-0 z-0"
-          />
+          >
+            <source src={targetMedia.src} type="video/mp4" />
+            <source src={targetMedia.fallbackSrc} type="video/mp4" />
+          </video>
 
           <div className="target-overlay absolute inset-0 z-10 p-[3vw] max-md:p-[2vw] flex flex-col justify-between opacity-0 text-white pointer-events-none bg-black/40 backdrop-blur-[2px]">
-            <div className="flex items-center text-[1vw] max-md:text-[3.2vw] font-medium tracking-widest text-accent">
-              <span className="mr-[1.25vw] max-md:mr-[1vw]">00</span>
-              <div className="grow h-[0.05vw] min-h-px bg-white/30" />
-              <span className="ml-[1.25vw] max-md:ml-[1vw]">VISION</span>
+            <div className="flex items-center justify-between text-[1vw] max-md:text-[3.2vw] font-medium tracking-widest text-accent">
+              <div className="flex items-center grow">
+                <span className="mr-[1.25vw] max-md:mr-[1vw]">00</span>
+                <div className="grow h-[0.05vw] min-h-px bg-white/30" />
+                <span className="ml-[1.25vw] max-md:ml-[1vw]">VISION</span>
+              </div>
+              <button
+                type="button"
+                onClick={toggleSound}
+                className="pointer-events-auto ml-4 flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white text-[0.8vw] max-md:text-[2.8vw] transition-all backdrop-blur-md cursor-pointer"
+                title={isMuted ? "تشغيل الصوت" : "كتم الصوت"}
+              >
+                {isMuted ? (
+                  <>
+                    <VolumeX className="w-3.5 h-3.5" />
+                    <span>تشغيل الصوت</span>
+                  </>
+                ) : (
+                  <>
+                    <Volume2 className="w-3.5 h-3.5" />
+                    <span>كتم الصوت</span>
+                  </>
+                )}
+              </button>
             </div>
 
             <div className="relative w-full min-w-0 grow overflow-hidden">
