@@ -6,6 +6,16 @@ const nextConfig: NextConfig = {
     // Safe to allow; remove if client projects use raster imagery only.
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "img.sanishtech.com",
+      },
+    ],
   },
 };
 

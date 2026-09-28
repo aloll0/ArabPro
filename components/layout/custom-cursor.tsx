@@ -238,7 +238,7 @@ export function CustomCursor() {
     <div
       ref={cursorRef}
       aria-hidden="true"
-      className="pointer-events-none fixed inset-0 z-[9999] hidden select-none md:block"
+      className="pointer-events-none fixed inset-0 z-9999 hidden select-none md:block"
     >
       {/* Trailing Ambient Halo / Interactive Ring */}
       <div

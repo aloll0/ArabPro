@@ -2,20 +2,20 @@
 
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { gsap, ScrollTrigger, SplitText } from "@/lib/gsap";
-import { Volume2, VolumeX } from "lucide-react";
+import Image from "next/image";
 
 const images = [
   {
-    src: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80",
+    src: "https://img.sanishtech.com/u/7d0e780b71552f3ae2adf1c203c8a2ae.png",
     top: "5vh",
     left: "10%",
-    width: "26%",
+    width: "11%",
     mLeft: "5%",
     mWidth: "55%",
     z: 300,
   },
   {
-    src: "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?w=800&q=80",
+    src: "https://img.sanishtech.com/u/336e1b5eb5827bb7445cde6ff89ad1e4.jpg",
     top: "25vh",
     left: "78%",
     width: "24%",
@@ -24,7 +24,7 @@ const images = [
     z: -400,
   },
   {
-    src: "https://images.unsplash.com/photo-1449844908441-8829872d2607?w=800&q=80",
+    src: "https://img.sanishtech.com/u/1053a4ca9657707b8ddbc2dcbd9f5d19.png",
     top: "50vh",
     left: "5%",
     width: "30%",
@@ -33,7 +33,7 @@ const images = [
     z: -800,
   },
   {
-    src: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&q=80",
+    src: "https://img.sanishtech.com/u/a5d8916aad7e75cd318b0fed103451bd.png",
     top: "80vh",
     left: "55%",
     width: "28%",
@@ -42,7 +42,7 @@ const images = [
     z: 150,
   },
   {
-    src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
+    src: "https://img.sanishtech.com/u/bbe4359b1536af79e1044e2a00e575ff.png",
     top: "110vh",
     left: "2%",
     width: "22%",
@@ -51,25 +51,25 @@ const images = [
     z: -600,
   },
   {
-    src: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80",
+    src: "https://img.sanishtech.com/u/ee97e86df2b18a17f6f824bfae7c2a89.png",
     top: "140vh",
     left: "0%",
-    width: "40%",
+    width: "20%",
     mLeft: "0%",
     mWidth: "70%",
     z: -200,
   },
   {
-    src: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80",
+    src: "https://img.sanishtech.com/u/765b24263f50bd51070ee9bdbb57d072.jpg",
     top: "160vh",
-    left: "80%",
+    left: "65%",
     width: "45%",
     mLeft: "30%",
     mWidth: "65%",
     z: -1000,
   },
   {
-    src: "https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?w=800&q=80",
+    src: "https://img.sanishtech.com/u/8c50f867facef7697b7b6766f92a1332.jpg",
     top: "180vh",
     left: "20%",
     width: "18%",
@@ -78,7 +78,7 @@ const images = [
     z: 400,
   },
   {
-    src: "https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=800&q=80",
+    src: "https://img.sanishtech.com/u/edde4775b4ca2a2b4f00e990dbc693d9.png",
     top: "210vh",
     left: "60%",
     width: "25%",
@@ -87,7 +87,7 @@ const images = [
     z: -500,
   },
   {
-    src: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=800&q=80",
+    src: "https://img.sanishtech.com/u/9dfba0a399a949ecf88318785f9b63b2.jpg",
     top: "270vh",
     left: "10%",
     width: "24%",
@@ -96,7 +96,7 @@ const images = [
     z: -800,
   },
   {
-    src: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&q=80",
+    src: "https://img.sanishtech.com/u/b5e6443e086686f9e1cddd8314f356cb.jpg",
     top: "280vh",
     left: "70%",
     width: "22%",
@@ -105,7 +105,7 @@ const images = [
     z: 200,
   },
   {
-    src: "https://images.unsplash.com/photo-1464146072230-91cabc968266?w=800&q=80",
+    src: "https://img.sanishtech.com/u/da14f0568cede78b8e95debc7a9f5e80.png",
     top: "330vh",
     left: "5%",
     width: "20%",
@@ -114,22 +114,13 @@ const images = [
     z: -350,
   },
   {
-    src: "https://images.unsplash.com/photo-1431540015161-0bf868a2d407?w=800&q=80",
+    src: "https://img.sanishtech.com/u/3a7b5aaba697a0f0337b59db3638c44f.jpg",
     top: "350vh",
     left: "70%",
     width: "26%",
     mLeft: "40%",
     mWidth: "55%",
     z: 100,
-  },
-  {
-    src: "https://images.unsplash.com/photo-1481253127861-534498168948?w=800&q=80",
-    top: "380vh",
-    left: "38%",
-    width: "24%",
-    mLeft: "20%",
-    mWidth: "50%",
-    z: -600,
   },
 ];
 
@@ -335,11 +326,13 @@ export function StickyGrid() {
               willChange: "transform",
             }}
           >
-            <img
+            <Image
               src={img.src}
               alt={`Architecture ${i + 1}`}
-              className="w-full h-auto object-cover block grayscale-[20%] group-hover:grayscale-0 transition-all duration-700 ease-out"
+              className="w-full h-auto object-cover block grayscale-20 group-hover:grayscale-0 transition-all duration-700 ease-out"
               loading="lazy"
+              width={1920}
+              height={1080}
             />
           </div>
         ))}
@@ -374,32 +367,6 @@ export function StickyGrid() {
           </video>
 
           <div className="target-overlay absolute inset-0 z-10 p-[3vw] max-md:p-[2vw] flex flex-col justify-between opacity-0 text-white pointer-events-none bg-black/40 backdrop-blur-[2px]">
-            <div className="flex items-center justify-between text-[1vw] max-md:text-[3.2vw] font-medium tracking-widest text-accent">
-              <div className="flex items-center grow">
-                <span className="mr-[1.25vw] max-md:mr-[1vw]">00</span>
-                <div className="grow h-[0.05vw] min-h-px bg-white/30" />
-                <span className="ml-[1.25vw] max-md:ml-[1vw]">VISION</span>
-              </div>
-              <button
-                type="button"
-                onClick={toggleSound}
-                className="pointer-events-auto ml-4 flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white text-[0.8vw] max-md:text-[2.8vw] transition-all backdrop-blur-md cursor-pointer"
-                title={isMuted ? "تشغيل الصوت" : "كتم الصوت"}
-              >
-                {isMuted ? (
-                  <>
-                    <VolumeX className="w-3.5 h-3.5" />
-                    <span>تشغيل الصوت</span>
-                  </>
-                ) : (
-                  <>
-                    <Volume2 className="w-3.5 h-3.5" />
-                    <span>كتم الصوت</span>
-                  </>
-                )}
-              </button>
-            </div>
-
             <div className="relative w-full min-w-0 grow overflow-hidden">
               <div className="absolute top-1/2 -translate-y-1/2 w-full z-0 min-w-0 max-w-full left-[2.5vw] max-md:left-[1.5vw]">
                 <h2 className="moving-heading will-change-transform text-[7vw] max-md:text-[16vw] font-medium tracking-tighter whitespace-nowrap flex gap-[6vw] max-md:gap-[8.5vw] items-center w-max max-w-full">
