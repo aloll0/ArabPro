@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const images = [
   {
-    src: "https://img.sanishtech.com/u/7d0e780b71552f3ae2adf1c203c8a2ae.png",
+    src: "https://files.catbox.moe/jmfo6i.png",
     top: "5vh",
     left: "10%",
     width: "11%",
@@ -15,7 +15,7 @@ const images = [
     z: 300,
   },
   {
-    src: "https://img.sanishtech.com/u/336e1b5eb5827bb7445cde6ff89ad1e4.jpg",
+    src: "https://files.catbox.moe/64a3xp.jpg",
     top: "25vh",
     left: "78%",
     width: "24%",
@@ -24,7 +24,7 @@ const images = [
     z: -400,
   },
   {
-    src: "https://img.sanishtech.com/u/1053a4ca9657707b8ddbc2dcbd9f5d19.png",
+    src: "https://files.catbox.moe/lnes0p.png",
     top: "50vh",
     left: "5%",
     width: "30%",
@@ -33,7 +33,7 @@ const images = [
     z: -800,
   },
   {
-    src: "https://img.sanishtech.com/u/a5d8916aad7e75cd318b0fed103451bd.png",
+    src: "https://files.catbox.moe/eezf56.png",
     top: "80vh",
     left: "55%",
     width: "28%",
@@ -42,7 +42,7 @@ const images = [
     z: 150,
   },
   {
-    src: "https://img.sanishtech.com/u/bbe4359b1536af79e1044e2a00e575ff.png",
+    src: "https://files.catbox.moe/dwj07q.png",
     top: "110vh",
     left: "2%",
     width: "22%",
@@ -51,7 +51,7 @@ const images = [
     z: -600,
   },
   {
-    src: "https://img.sanishtech.com/u/ee97e86df2b18a17f6f824bfae7c2a89.png",
+    src: "https://files.catbox.moe/yy7y9t.png",
     top: "140vh",
     left: "0%",
     width: "20%",
@@ -60,7 +60,7 @@ const images = [
     z: -200,
   },
   {
-    src: "https://img.sanishtech.com/u/765b24263f50bd51070ee9bdbb57d072.jpg",
+    src: "https://files.catbox.moe/423wie.jpg",
     top: "160vh",
     left: "65%",
     width: "45%",
@@ -69,7 +69,7 @@ const images = [
     z: -1000,
   },
   {
-    src: "https://img.sanishtech.com/u/8c50f867facef7697b7b6766f92a1332.jpg",
+    src: "https://files.catbox.moe/ftcjbi.jpg",
     top: "180vh",
     left: "20%",
     width: "18%",
@@ -78,7 +78,7 @@ const images = [
     z: 400,
   },
   {
-    src: "https://img.sanishtech.com/u/edde4775b4ca2a2b4f00e990dbc693d9.png",
+    src: "https://files.catbox.moe/r47614.png",
     top: "210vh",
     left: "60%",
     width: "25%",
@@ -87,7 +87,7 @@ const images = [
     z: -500,
   },
   {
-    src: "https://img.sanishtech.com/u/9dfba0a399a949ecf88318785f9b63b2.jpg",
+    src: "https://files.catbox.moe/n1pq0l.jpg",
     top: "270vh",
     left: "10%",
     width: "24%",
@@ -96,7 +96,7 @@ const images = [
     z: -800,
   },
   {
-    src: "https://img.sanishtech.com/u/b5e6443e086686f9e1cddd8314f356cb.jpg",
+    src: "https://files.catbox.moe/q61j0p.jpg",
     top: "280vh",
     left: "70%",
     width: "22%",
@@ -105,16 +105,7 @@ const images = [
     z: 200,
   },
   {
-    src: "https://img.sanishtech.com/u/da14f0568cede78b8e95debc7a9f5e80.png",
-    top: "330vh",
-    left: "5%",
-    width: "20%",
-    mLeft: "0%",
-    mWidth: "45%",
-    z: -350,
-  },
-  {
-    src: "https://img.sanishtech.com/u/3a7b5aaba697a0f0337b59db3638c44f.jpg",
+    src: "https://files.catbox.moe/4ma9lt.jpg",
     top: "350vh",
     left: "70%",
     width: "26%",
