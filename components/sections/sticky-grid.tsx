@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const images = [
   {
-    src: "https://files.catbox.moe/jmfo6i.png",
+    src: "/images/sticky-grid/jmfo6i.png",
     top: "5vh",
     left: "10%",
     width: "11%",
@@ -15,7 +15,7 @@ const images = [
     z: 300,
   },
   {
-    src: "https://files.catbox.moe/64a3xp.jpg",
+    src: "/images/sticky-grid/64a3xp.jpg",
     top: "25vh",
     left: "78%",
     width: "24%",
@@ -24,7 +24,7 @@ const images = [
     z: -400,
   },
   {
-    src: "https://files.catbox.moe/lnes0p.png",
+    src: "/images/sticky-grid/lnes0p.png",
     top: "50vh",
     left: "5%",
     width: "30%",
@@ -33,7 +33,7 @@ const images = [
     z: -800,
   },
   {
-    src: "https://files.catbox.moe/eezf56.png",
+    src: "/images/sticky-grid/eezf56.png",
     top: "80vh",
     left: "55%",
     width: "28%",
@@ -42,7 +42,7 @@ const images = [
     z: 150,
   },
   {
-    src: "https://files.catbox.moe/dwj07q.png",
+    src: "/images/sticky-grid/dwj07q.png",
     top: "110vh",
     left: "2%",
     width: "22%",
@@ -51,7 +51,7 @@ const images = [
     z: -600,
   },
   {
-    src: "https://files.catbox.moe/yy7y9t.png",
+    src: "/images/sticky-grid/yy7y9t.png",
     top: "140vh",
     left: "0%",
     width: "20%",
@@ -60,7 +60,7 @@ const images = [
     z: -200,
   },
   {
-    src: "https://files.catbox.moe/423wie.jpg",
+    src: "/images/sticky-grid/423wie.jpg",
     top: "160vh",
     left: "65%",
     width: "45%",
@@ -69,7 +69,7 @@ const images = [
     z: -1000,
   },
   {
-    src: "https://files.catbox.moe/ftcjbi.jpg",
+    src: "/images/sticky-grid/ftcjbi.jpg",
     top: "180vh",
     left: "20%",
     width: "18%",
@@ -78,7 +78,7 @@ const images = [
     z: 400,
   },
   {
-    src: "https://files.catbox.moe/r47614.png",
+    src: "/images/sticky-grid/r47614.png",
     top: "210vh",
     left: "60%",
     width: "25%",
@@ -87,7 +87,7 @@ const images = [
     z: -500,
   },
   {
-    src: "https://files.catbox.moe/n1pq0l.jpg",
+    src: "/images/sticky-grid/n1pq0l.jpg",
     top: "270vh",
     left: "10%",
     width: "24%",
@@ -96,7 +96,7 @@ const images = [
     z: -800,
   },
   {
-    src: "https://files.catbox.moe/q61j0p.jpg",
+    src: "/images/sticky-grid/q61j0p.jpg",
     top: "280vh",
     left: "70%",
     width: "22%",
@@ -105,7 +105,7 @@ const images = [
     z: 200,
   },
   {
-    src: "https://files.catbox.moe/4ma9lt.jpg",
+    src: "/images/sticky-grid/4ma9lt.jpg",
     top: "350vh",
     left: "70%",
     width: "26%",
