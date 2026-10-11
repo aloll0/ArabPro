@@ -32,7 +32,7 @@ export default function OpengraphImage() {
           color: "#8f8d95",
         }}
       >
-        <span>{siteConfig.name}</span>
+        <span>{siteConfig.nameEn}</span>
         <div
           style={{
             display: "flex",
@@ -52,13 +52,13 @@ export default function OpengraphImage() {
       >
         <div
           style={{
-            fontSize: 92,
+            fontSize: 72,
             fontStyle: "italic",
-            lineHeight: 1.02,
+            lineHeight: 1.1,
             maxWidth: 980,
           }}
         >
-          {siteConfig.tagline}
+          {siteConfig.taglineEn}
         </div>
         <div
           style={{

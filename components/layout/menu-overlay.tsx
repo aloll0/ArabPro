@@ -8,7 +8,7 @@ import { getLenis } from "@/lib/hooks/use-lenis";
 import { TransitionLink } from "@/components/layout/page-transition";
 import { padIndex } from "@/lib/utils";
 
-const links = [{ label: "Home", href: "/" }, ...siteConfig.nav];
+import { useTranslation } from "@/lib/i18n/context";
 
 const EASE_MENU = [0.76, 0, 0.24, 1] as const;
 
@@ -18,6 +18,15 @@ const EASE_MENU = [0.76, 0, 0.24, 1] as const;
  */
 export function MenuOverlay() {
   const { menuOpen, setMenuOpen } = useAppStore();
+  const { t, lang } = useTranslation();
+
+  const links = [
+    { label: t("nav.home"), href: "/" },
+    { label: t("nav.work"), href: "/work" },
+    { label: t("nav.services"), href: "/#services" },
+    { label: t("nav.about"), href: "/about" },
+    { label: t("nav.contact"), href: "/contact" },
+  ];
 
   // Scroll lock + ESC to close
   useEffect(() => {
@@ -45,7 +54,7 @@ export function MenuOverlay() {
         <motion.nav
           id="fullscreen-menu"
           aria-label="Main navigation"
-          className="fixed inset-0 z-[90] flex flex-col justify-between bg-surface pt-28 pb-10"
+          className="fixed inset-0 z-90 flex flex-col justify-between bg-surface pt-28 pb-10"
           initial={{ y: "-100%" }}
           animate={{ y: 0 }}
           exit={{ y: "-100%" }}
@@ -104,7 +113,9 @@ export function MenuOverlay() {
             exit={{ opacity: 0, transition: { duration: 0.2 } }}
           >
             <div>
-              <p className="text-label mb-2">Get in touch</p>
+              <p className="text-label mb-2">
+                {lang === "ar" ? "تواصل معنا" : "Get in touch"}
+              </p>
               <a
                 href={`mailto:${siteConfig.email}`}
                 data-cursor="hover"

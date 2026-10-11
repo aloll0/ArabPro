@@ -10,9 +10,12 @@ import { Magnetic } from "@/components/motion/magnetic";
 
 import { FullLogo } from "@/components/ui/logo";
 
+import { useTranslation } from "@/lib/i18n/context";
+
 /** Footer with a big final CTA, socials and back-to-top. */
 export function Footer() {
   const year = new Date().getFullYear();
+  const { t, lang } = useTranslation();
 
   const scrollTop = () => {
     const lenis = getLenis();
@@ -24,12 +27,16 @@ export function Footer() {
     <footer className="border-t border-border">
       <div className="container-x section-y">
         <Reveal>
-          <p className="text-label mb-8">Got a project in mind?</p>
+          <p className="text-label mb-8">
+            {lang === "ar"
+              ? "هل لديك مشروع أو فكرة حملة؟"
+              : "Got a project in mind?"}
+          </p>
         </Reveal>
         <TransitionLink
           href="/contact"
           data-cursor="view"
-          data-cursor-label="Say hi"
+          data-cursor-label={lang === "ar" ? "تواصل" : "Say hi"}
           className="group block"
         >
           <SplitTextReveal
@@ -37,10 +44,10 @@ export function Footer() {
             type="words"
             className="text-display-xl transition-colors duration-500 group-hover:text-accent"
           >
-            Let&apos;s make it cinematic
+            {t("brand.tagline")}
           </SplitTextReveal>
           <span className="mt-6 inline-flex items-center gap-2 text-label transition-colors group-hover:text-accent">
-            Start a conversation
+            {lang === "ar" ? "ابدأ محادثة مع فريقنا" : "Start a conversation"}
             <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
           </span>
         </TransitionLink>
@@ -49,27 +56,65 @@ export function Footer() {
           <div className="md:col-span-2">
             <FullLogo width={230} className="mb-4" />
             <p className="max-w-sm text-sm text-muted-foreground">
-              {siteConfig.tagline}. {siteConfig.location}.
+              {t("brand.subTagline")}. {t("brand.location")}.
             </p>
           </div>
           <nav aria-label="Footer navigation">
-            <p className="text-label mb-4">Sitemap</p>
+            <p className="text-label mb-4">
+              {lang === "ar" ? "خريطة الموقع" : "Sitemap"}
+            </p>
             <ul className="flex flex-col gap-2 text-sm">
-              {siteConfig.nav.map((link) => (
-                <li key={link.href}>
-                  <TransitionLink
-                    href={link.href}
-                    data-cursor="hover"
-                    className="link-underline text-foreground/80 hover:text-foreground"
-                  >
-                    {link.label}
-                  </TransitionLink>
-                </li>
-              ))}
+              <li>
+                <TransitionLink
+                  href="/"
+                  data-cursor="hover"
+                  className="link-underline text-foreground/80 hover:text-foreground"
+                >
+                  {t("nav.home")}
+                </TransitionLink>
+              </li>
+              <li>
+                <TransitionLink
+                  href="/work"
+                  data-cursor="hover"
+                  className="link-underline text-foreground/80 hover:text-foreground"
+                >
+                  {t("nav.work")}
+                </TransitionLink>
+              </li>
+              <li>
+                <TransitionLink
+                  href="/#services"
+                  data-cursor="hover"
+                  className="link-underline text-foreground/80 hover:text-foreground"
+                >
+                  {t("nav.services")}
+                </TransitionLink>
+              </li>
+              <li>
+                <TransitionLink
+                  href="/about"
+                  data-cursor="hover"
+                  className="link-underline text-foreground/80 hover:text-foreground"
+                >
+                  {t("nav.about")}
+                </TransitionLink>
+              </li>
+              <li>
+                <TransitionLink
+                  href="/contact"
+                  data-cursor="hover"
+                  className="link-underline text-foreground/80 hover:text-foreground"
+                >
+                  {t("nav.contact")}
+                </TransitionLink>
+              </li>
             </ul>
           </nav>
           <div>
-            <p className="text-label mb-4">Socials</p>
+            <p className="text-label mb-4">
+              {lang === "ar" ? "قنوات التواصل" : "Socials"}
+            </p>
             <ul className="flex flex-col gap-2 text-sm">
               {siteConfig.socials.map((s) => (
                 <li key={s.label}>
@@ -90,7 +135,9 @@ export function Footer() {
 
         <div className="mt-16 flex items-center justify-between text-xs text-muted-foreground">
           <p>
-            © {year} {siteConfig.legalName}. All rights reserved.
+            © {year}{" "}
+            {lang === "ar" ? siteConfig.legalName : siteConfig.legalNameEn}.{" "}
+            {lang === "ar" ? "جميع الحقوق محفوظة." : "All rights reserved."}
           </p>
           <Magnetic>
             <button

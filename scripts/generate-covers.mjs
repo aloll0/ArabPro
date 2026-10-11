@@ -13,6 +13,20 @@ const outDir = join(root, "public", "covers");
 mkdirSync(outDir, { recursive: true });
 
 const PROJECTS = [
+  { slug: "national-day-film", a: "#006c35", b: "#c6ff00", shape: "ring" },
+  { slug: "ebtekar-united", a: "#b57edc", b: "#c6ff00", shape: "grid" },
+  { slug: "sam-delivery", a: "#ff6b4a", b: "#ffd166", shape: "orbit" },
+  { slug: "eesal", a: "#ff2e63", b: "#ff9db8", shape: "bars" },
+  { slug: "acacia", a: "#c5a880", b: "#e5d4c0", shape: "arc" },
+  { slug: "servica", a: "#2ee6ff", b: "#8fb8ff", shape: "grid" },
+  { slug: "alsheehi", a: "#4e73df", b: "#20c997", shape: "orbit" },
+  { slug: "shadan", a: "#9d4edd", b: "#c77dff", shape: "arc" },
+  { slug: "loksara", a: "#e0a96d", b: "#f7d070", shape: "star" },
+  { slug: "sovan", a: "#b57edc", b: "#e879f9", shape: "ring" },
+  { slug: "mabeet", a: "#06d6a0", b: "#118ab2", shape: "bars" },
+  { slug: "fzah", a: "#4361ee", b: "#4cc9f0", shape: "grid" },
+  { slug: "manabbeh", a: "#7209b7", b: "#f72585", shape: "ring" },
+  { slug: "manabbeh-alhilal", a: "#0052cc", b: "#ffffff", shape: "star" },
   { slug: "nova-films", a: "#b57edc", b: "#c6ff00", shape: "ring" },
   { slug: "klar-audio", a: "#7d5cff", b: "#c3b5ff", shape: "bars" },
   { slug: "orbital-festival", a: "#b8ff2e", b: "#5aff8f", shape: "orbit" },

@@ -57,7 +57,6 @@ export function SplitTextReveal({
 
       const split = SplitText.create(el, {
         type: type === "lines" ? "lines" : `lines,${type}`,
-        mask: "lines",
         autoSplit: true,
         linesClass: "split-line",
         onSplit(self) {
@@ -72,7 +71,8 @@ export function SplitTextReveal({
           const shouldPause = trigger === "manual" && !playedRef.current;
 
           const tween = gsap.from(targets, {
-            yPercent: 110,
+            y: 35,
+            opacity: 0,
             duration,
             delay,
             stagger: defaultStagger,

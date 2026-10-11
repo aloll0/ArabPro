@@ -3,9 +3,8 @@
 import { useRef, useState } from "react";
 import { gsap, useGSAP, EASE } from "@/lib/gsap";
 import { useAppStore } from "@/lib/store";
-import { siteConfig } from "@/content/site.config";
-
 import { FullLogo } from "@/components/ui/logo";
+import { useTranslation } from "@/lib/i18n/context";
 
 const MIN_DURATION = 1.6; // seconds — the loader never flashes away instantly
 
@@ -19,6 +18,7 @@ const MIN_DURATION = 1.6; // seconds — the loader never flashes away instantly
 export function Preloader() {
   const setLoaderDone = useAppStore((s) => s.setLoaderDone);
   const [hidden, setHidden] = useState(false);
+  const { t, lang } = useTranslation();
   const rootRef = useRef<HTMLDivElement>(null);
   const counterRef = useRef<HTMLSpanElement>(null);
   const barRef = useRef<HTMLDivElement>(null);
@@ -106,7 +106,7 @@ export function Preloader() {
   return (
     <div
       ref={rootRef}
-      className="fixed inset-0 z-[150] flex flex-col justify-between bg-background"
+      className="fixed inset-0 z-150 flex flex-col justify-between bg-background"
       aria-hidden="true"
     >
       <div className="h-px w-full origin-left bg-border">
@@ -124,10 +124,12 @@ export function Preloader() {
           priority
           className="mb-2 drop-shadow-[0_0_40px_rgba(181,126,220,0.5)]"
         />
-        <p className="text-label text-muted-foreground">{siteConfig.tagline}</p>
+        <p className="text-label text-muted-foreground">{t("brand.tagline")}</p>
       </div>
       <div className="container-x flex items-end justify-between pb-10">
-        <span className="text-label">Loading experience</span>
+        <span className="text-label">
+          {lang === "ar" ? "جاري التحميل..." : "Loading experience"}
+        </span>
         <span
           ref={counterRef}
           className="font-display text-6xl tabular-nums leading-none"

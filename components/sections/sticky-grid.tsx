@@ -1,8 +1,10 @@
 "use client";
 
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { gsap, ScrollTrigger, SplitText } from "@/lib/gsap";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
 import Image from "next/image";
+import { useTranslation } from "@/lib/i18n/context";
+import { cn } from "@/lib/utils";
 
 const images = [
   {
@@ -119,33 +121,39 @@ const targetMedia = {
   src: "/videos/national-day.mp4",
   fallbackSrc:
     "https://videos.themiify.com/api/videos/04dc9218-728b-4fe0-b9ef-358e5c36fe87/stream?accessToken=695c1a7e871a0ec58f6d0b8a9bd5db48",
-  left: "40%",
-  width: "20%",
-  mLeft: "15%",
-  mWidth: "70%",
+  width: "22vw",
+  height: "42vh",
 };
-
-const targetImage = targetMedia;
 
 const visionData = [
   {
-    heading: "Design",
-    desc: "Our design aesthetic is established through a consistent process and a detailed concept brief, which considers client needs, site context, and future occupiers.",
+    headingAr: "Vision • الرؤية",
+    headingEn: "Vision • Concept",
+    descAr:
+      "الصقر (حرف ع) — رؤية وطنية ثاقبة واستراتيجية عميقة ترسم تموضع علامتك بأعلى معايير الإبداع والتأثير المستدام.",
+    descEn:
+      "The Falcon (Letter ع) — Piercing national vision and deep strategy shaping your brand positioning with sustainable impact.",
   },
   {
-    heading: "Innovation",
-    desc: "We combine and test these elements to create a singular design vision concealing many influencing layers. This singular vision, like a piece of artwork, is unique and individual.",
+    headingAr: "Direction • الاتجاه",
+    headingEn: "Direction • Momentum",
+    descAr:
+      "الخطوط الثلاثة (حرف ر) — مسار تنفيذي متكامل يربط بين الشاشة والميدان، ويقود علامتك نحو النمو والريادة في السوق.",
+    descEn:
+      "The Three Lines (Letter ر) — Integrated execution roadmap connecting screen to field, steering market leadership.",
   },
   {
-    heading: "Enhancement",
-    desc: "We believe the principles of design quality should always be present no matter the project brief or building scale. Every detail is meticulously refined to exceed expectations.",
+    headingAr: "Precision • الدقة",
+    headingEn: "Precision • Craft",
+    descAr:
+      "النقطة (حرف ب) — عناية فائقة بأدق تفاصيل الإنتاج السينمائي والتقني، لضمان مخرجات تليق بأكبر الجهات والمشاريع الطموحة.",
+    descEn:
+      "The Dot (Letter ب) — Obsessive attention to cinematic and technical detail, delivering results for ambitious entities.",
   },
 ];
 
 const duration = 0.8;
 const pause = 0.5;
-const stagger = 0.05;
-const easeLine = "none";
 const easeHead = "power1.inOut";
 
 export function StickyGrid() {
@@ -153,7 +161,8 @@ export function StickyGrid() {
   const pinWrapperRef = useRef<HTMLDivElement>(null);
   const targetRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isMuted, setIsMuted] = useState(true);
+  const [isMuted] = useState(true);
+  const { lang } = useTranslation();
 
   useEffect(() => {
     if (videoRef.current) {
@@ -162,39 +171,28 @@ export function StickyGrid() {
     }
   }, []);
 
-  const toggleSound = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (videoRef.current) {
-      const nextMuted = !videoRef.current.muted;
-      videoRef.current.muted = nextMuted;
-      setIsMuted(nextMuted);
-      if (videoRef.current.paused) {
-        videoRef.current.play().catch(() => {});
-      }
-    }
-  };
-
   useLayoutEffect(() => {
-    if (!containerRef.current) return;
+    if (!containerRef.current || !pinWrapperRef.current || !targetRef.current)
+      return;
 
     const ctx = gsap.context(() => {
       const dim = "rgba(255,255,255,0.2)";
       const bright = "rgba(255,255,255,1)";
+
+      const isMobile = window.innerWidth < 768;
+      const startClip = isMobile
+        ? "inset(32% 15% round 16px)"
+        : "inset(28% 38% round 16px)";
+      const endClip = "inset(0% 0% round 0px)";
 
       const getHeadingX = (i: number) => {
         const items = gsap.utils.toArray<HTMLElement>(".heading-item");
         return items[i] ? -items[i].offsetLeft : 0;
       };
 
-      const splits = visionData.map((_, idx) =>
-        SplitText.create(`.desc-block-${idx}`, {
-          type: "lines",
-          mask: "lines",
-          linesClass: "split-line",
-        }),
-      );
-
-      splits.forEach((s) => gsap.set(s.lines, { yPercent: 100 }));
+      // Set initial states
+      gsap.set(targetRef.current, { clipPath: startClip });
+      gsap.set(".desc-block", { autoAlpha: 0, y: 20 });
       gsap.set(".heading-item", { color: dim });
       gsap.set(".heading-item-0", { color: bright });
       gsap.set(".moving-heading", {
@@ -202,6 +200,7 @@ export function StickyGrid() {
         transformOrigin: "0% 50%",
       });
 
+      // Parallax images
       gsap.utils.toArray<HTMLElement>(".grid-image").forEach((el) => {
         const speed = parseFloat(el.dataset.speed || "0");
         gsap.to(el, {
@@ -216,84 +215,95 @@ export function StickyGrid() {
         });
       });
 
-      if (pinWrapperRef.current && targetRef.current) {
-        const pinTl = gsap.timeline({
-          scrollTrigger: {
-            trigger: pinWrapperRef.current,
-            start: "center center",
-            end: "+=600%",
-            scrub: 0.55,
-            pin: true,
-            invalidateOnRefresh: true,
-          },
-        });
+      // Pin Timeline using GPU clip-path (zero layout reflow & zero buffer resize freeze)
+      const pinTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: pinWrapperRef.current,
+          start: "center center",
+          end: "+=380%",
+          scrub: true,
+          pin: true,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+        },
+      });
 
+      // Expand card smoothly from center without resizing DOM video texture
+      pinTl
+        .to(targetRef.current, {
+          clipPath: endClip,
+          ease: "none",
+          duration: 1,
+        })
+        .to(".center-text", { opacity: 0, duration: 1 }, "<")
+        .to(".target-overlay", { opacity: 1, duration: 0.3 })
+        .to(".desc-block-0", {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.5,
+          ease: "power2.out",
+        })
+        .to({}, { duration: pause });
+
+      // Step transitions - clean autoAlpha so text NEVER overlaps
+      for (let s = 0; s < visionData.length - 1; s++) {
+        const next = s + 1;
+        const label = `slide${next + 1}`;
+        pinTl.addLabel(label);
         pinTl
-          .to(targetRef.current, {
-            width: "100vw",
-            height: "100vh",
-            marginLeft: 0,
-            borderRadius: 0,
-            ease: "none",
-            duration: 1,
-          })
-          .to(".center-text", { opacity: 0, duration: 1 }, "<")
-          .to(".target-overlay", { opacity: 1, duration: 0.2 })
-          .to(splits[0].lines, {
-            yPercent: 0,
-            stagger,
-            duration,
-            ease: easeLine,
-          })
-          .to({}, { duration: pause });
-
-        for (let s = 0; s < visionData.length - 1; s++) {
-          const next = s + 1;
-          const label = `slide${next + 1}`;
-          pinTl.addLabel(label);
-          pinTl
-            .to(
-              ".moving-heading",
-              {
-                x: () => getHeadingX(next),
-                duration,
-                ease: easeHead,
-              },
-              label,
-            )
-            .to(
-              splits[s].lines,
-              { yPercent: -100, stagger, duration, ease: easeLine },
-              label,
-            )
-            .to(`.heading-item-${s}`, { color: dim, duration }, label)
-            .to(`.heading-item-${next}`, { color: bright, duration }, label)
-            .to(
-              splits[next].lines,
-              { yPercent: 0, stagger, duration, ease: easeLine },
-              label,
-            );
-          pinTl.to({}, { duration: pause });
-        }
+          .to(
+            ".moving-heading",
+            {
+              x: () => getHeadingX(next),
+              duration,
+              ease: easeHead,
+            },
+            label,
+          )
+          .to(`.heading-item-${s}`, { color: dim, duration }, label)
+          .to(`.heading-item-${next}`, { color: bright, duration }, label)
+          .to(
+            `.desc-block-${s}`,
+            { autoAlpha: 0, y: -20, duration: 0.35, ease: "power2.in" },
+            label,
+          )
+          .to(
+            `.desc-block-${next}`,
+            { autoAlpha: 1, y: 0, duration: 0.45, ease: "power2.out" },
+            label + "+=0.1",
+          );
+        pinTl.to({}, { duration: pause });
       }
 
-      // Refresh ScrollTrigger after DOM & images settle
+      // Smoothly fade out the video container so it never overlaps the WorkGrid portfolio below
+      pinTl
+        .to(targetRef.current, {
+          opacity: 0,
+          duration: 0.6,
+          ease: "power2.inOut",
+        })
+        .to(
+          pinWrapperRef.current,
+          {
+            autoAlpha: 0,
+            duration: 0.3,
+          },
+          "<",
+        );
+
       requestAnimationFrame(() => {
         ScrollTrigger.refresh();
       });
-
-      return () => {
-        splits.forEach((s) => s.revert());
-      };
     }, containerRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [lang]);
 
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-[500vh] overflow-x-clip bg-black"
+      dir="ltr"
+      className="relative w-full h-[500vh] bg-black"
     >
       {/* Sticky Center Text - Sticks to viewport center while user scrolls */}
       <div className="center-text sticky top-0 left-0 w-full h-screen flex items-center justify-center pointer-events-none z-10">
@@ -329,19 +339,17 @@ export function StickyGrid() {
         ))}
       </div>
 
-      {/* Pinned Expanding Target Card */}
+      {/* Pinned Expanding Target Card - GPU-clipped, 100% centered in RTL & LTR */}
       <div
         ref={pinWrapperRef}
-        className="absolute z-20 w-full h-screen flex justify-start items-center pointer-events-none overflow-hidden"
+        className="absolute z-20 w-full h-screen flex justify-center items-center pointer-events-none overflow-hidden will-change-transform"
         style={{ top: "200vh", left: 0 }}
       >
         <div
           ref={targetRef}
-          className="shadow-[0_0.8vw_2.5vw_rgba(0,0,0,0.6)] overflow-hidden pointer-events-auto relative"
+          className="shadow-[0_0.8vw_2.5vw_rgba(0,0,0,0.6)] overflow-hidden pointer-events-auto relative w-full h-full will-change-[clip-path]"
           style={{
-            marginLeft: targetImage.left,
-            width: targetImage.width,
-            height: "40vh",
+            clipPath: "inset(28% 38% round 16px)",
           }}
         >
           <video
@@ -351,13 +359,14 @@ export function StickyGrid() {
             muted={isMuted}
             playsInline
             preload="auto"
-            className="w-full h-full object-cover block absolute inset-0 z-0"
+            className="w-full h-full object-cover block absolute inset-0 z-0 pointer-events-none"
           >
             <source src={targetMedia.src} type="video/mp4" />
             <source src={targetMedia.fallbackSrc} type="video/mp4" />
           </video>
 
-          <div className="target-overlay absolute inset-0 z-10 p-[3vw] max-md:p-[2vw] flex flex-col justify-between opacity-0 text-white pointer-events-none bg-black/40 backdrop-blur-[2px]">
+          {/* Cinematic dark scrim overlay */}
+          <div className="target-overlay absolute inset-0 z-10 p-[3vw] max-md:p-[2vw] flex flex-col justify-between opacity-0 text-white pointer-events-none bg-linear-to-t from-black/85 via-black/45 to-black/30">
             <div className="relative w-full min-w-0 grow overflow-hidden">
               <div className="absolute top-1/2 -translate-y-1/2 w-full z-0 min-w-0 max-w-full left-[2.5vw] max-md:left-[1.5vw]">
                 <h2 className="moving-heading will-change-transform text-[7vw] max-md:text-[16vw] font-medium tracking-tighter whitespace-nowrap flex gap-[6vw] max-md:gap-[8.5vw] items-center w-max max-w-full">
@@ -366,20 +375,32 @@ export function StickyGrid() {
                       key={idx}
                       className={`heading-item heading-item-${idx}`}
                     >
-                      {data.heading}
+                      {lang === "ar" ? data.headingAr : data.headingEn}
                     </span>
                   ))}
                 </h2>
               </div>
 
-              <div className="vision-desc-wrap absolute z-10 w-[30vw] max-md:w-[80vw] right-[1.5vw] bottom-[1.5vw] max-md:right-[1vw] max-md:bottom-0">
-                <div className="relative w-full min-h-[12vw] h-[16vw] max-md:min-h-[25vw] max-md:h-[30vw]">
+              {/* Vision Description Wrap - Bilingual text layout */}
+              <div
+                className={cn(
+                  "vision-desc-wrap absolute z-10 w-[34vw] max-md:w-[85vw] bottom-[3vw] max-md:bottom-[2vw]",
+                  lang === "ar"
+                    ? "right-[3vw] max-md:right-[2vw] text-right"
+                    : "left-[3vw] max-md:left-[2vw] text-left",
+                )}
+                dir={lang === "ar" ? "rtl" : "ltr"}
+              >
+                <div className="relative w-full min-h-[14vw] h-[16vw] max-md:min-h-[30vw] max-md:h-[35vw]">
                   {visionData.map((data, idx) => (
                     <p
                       key={idx}
-                      className={`desc-block desc-block-${idx} absolute inset-0 m-0 w-full text-[1.1vw] max-md:text-[3.7vw] leading-[1.4] font-medium`}
+                      className={cn(
+                        `desc-block desc-block-${idx} absolute inset-0 m-0 w-full text-[1.15vw] max-md:text-[3.8vw] leading-[1.7] font-medium text-white/95 select-none`,
+                        lang === "ar" ? "text-right" : "text-left",
+                      )}
                     >
-                      {data.desc}
+                      {lang === "ar" ? data.descAr : data.descEn}
                     </p>
                   ))}
                 </div>
