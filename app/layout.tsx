@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Manrope } from "next/font/google";
+import { Cairo, Fraunces, Manrope } from "next/font/google";
 import { siteConfig } from "@/content/site.config";
 import { SmoothScroll } from "@/components/motion/smooth-scroll";
 import { TransitionProvider } from "@/components/layout/page-transition";
@@ -8,6 +8,8 @@ import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { CustomCursor } from "@/components/layout/custom-cursor";
 import { GrainOverlay } from "@/components/layout/grain-overlay";
+import { I18nProvider } from "@/lib/i18n/context";
+import { LanguageSwitcher } from "@/components/ui/language-switcher";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -20,6 +22,13 @@ const fraunces = Fraunces({
 const manrope = Manrope({
   variable: "--font-manrope",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const cairo = Cairo({
+  variable: "--font-cairo",
+  subsets: ["arabic", "latin"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
   display: "swap",
 });
 
@@ -69,8 +78,9 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
-      className={`${fraunces.variable} ${manrope.variable} antialiased`}
+      lang="ar"
+      dir="rtl"
+      className={`${fraunces.variable} ${manrope.variable} ${cairo.variable} antialiased`}
     >
       <body className="min-h-svh bg-background font-sans text-foreground">
         <script
@@ -79,15 +89,18 @@ export default function RootLayout({
             __html: JSON.stringify(organizationJsonLd),
           }}
         />
-        <SmoothScroll />
-        <Preloader />
-        <TransitionProvider>
-          <Navbar />
-          {children}
-          <Footer />
-        </TransitionProvider>
-        <CustomCursor />
-        <GrainOverlay />
+        <I18nProvider>
+          <SmoothScroll />
+          <Preloader />
+          <TransitionProvider>
+            <Navbar />
+            {children}
+            <Footer />
+          </TransitionProvider>
+          <CustomCursor />
+          <GrainOverlay />
+          <LanguageSwitcher />
+        </I18nProvider>
       </body>
     </html>
   );

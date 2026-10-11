@@ -1,8 +1,11 @@
+"use client";
+
 import Image from "next/image";
 import type { CaseStudy } from "@/content/case-studies";
 import { TransitionLink } from "@/components/layout/page-transition";
 import { padIndex } from "@/lib/utils";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "@/lib/i18n/context";
 
 interface ProjectCardProps {
   project: CaseStudy;
@@ -18,17 +21,26 @@ export function ProjectCard({
   className,
   priority = false,
 }: ProjectCardProps) {
+  const { lang } = useTranslation();
+
+  const title =
+    lang === "ar" ? project.titleAr || project.title : project.title;
+  const categories =
+    lang === "ar"
+      ? project.categoriesAr || project.categories
+      : project.categories;
+
   return (
     <TransitionLink
       href={`/work/${project.slug}`}
       data-cursor="view"
-      data-cursor-label="View"
+      data-cursor-label={lang === "ar" ? "عرض" : "View"}
       className={cn("group block", className)}
     >
-      <div className="relative aspect-[4/3] overflow-hidden rounded bg-surface">
+      <div className="relative aspect-4/3 overflow-hidden rounded bg-surface">
         <Image
           src={project.cover}
-          alt={`${project.title} — ${project.tagline}`}
+          alt={`${title} — ${project.tagline}`}
           fill
           priority={priority}
           sizes="(max-width: 768px) 100vw, 50vw"
@@ -40,13 +52,13 @@ export function ProjectCard({
         <div className="flex items-baseline gap-4">
           <span className="text-label">{padIndex(index)}</span>
           <h3 className="font-display text-2xl transition-colors duration-300 group-hover:text-accent">
-            {project.title}
+            {title}
           </h3>
         </div>
         <span className="text-label shrink-0">{project.year}</span>
       </div>
-      <p className="mt-1 pl-10 text-sm text-muted-foreground">
-        {project.categories.join(" · ")}
+      <p className="mt-1 pl-10 text-sm text-muted-foreground rtl:pr-10 rtl:pl-0">
+        {categories.join(" · ")}
       </p>
     </TransitionLink>
   );

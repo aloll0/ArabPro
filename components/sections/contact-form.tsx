@@ -10,26 +10,50 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { useTranslation } from "@/lib/i18n/context";
 
 const contactSchema = z.object({
-  name: z.string().min(2, "Tell us your name"),
-  email: z.email("We need a valid email to reply"),
+  name: z.string().min(2, "يرجى كتابة الاسم / Name is required"),
+  email: z
+    .string()
+    .email("يرجى إدخال بريد إلكتروني صالح / Valid email required"),
   company: z.string().optional(),
-  budget: z.string().min(1, "Pick a range — rough is fine"),
-  message: z.string().min(20, "Give us at least a couple of sentences"),
+  service: z.string().min(1, "يرجى اختيار نطاق المشروع / Pick a service"),
+  message: z
+    .string()
+    .min(10, "يرجى كتابة تفاصيل مبسطة / Please provide brief details"),
 });
 
 type ContactValues = z.infer<typeof contactSchema>;
 
-const BUDGETS = ["< €10k", "€10k – €25k", "€25k – €50k", "€50k +"];
+const SERVICE_CHIPS_AR = [
+  "إنتاج مرئي وسينمائي",
+  "استراتيجية وهوية بصرية",
+  "نمو رقمي وحملات ممولة",
+  "أجنحة معارض وفعاليات",
+  "موشن جرافيك و3D",
+  "ذكاء اصطناعي وأتمتة",
+  "تفعيل ميداني وروود شو",
+  "مشروع متكامل شامل",
+];
 
-/**
- * Contact form — react-hook-form + zod validation, animated submit
- * states. The submit handler is a stub: wire it to a route handler,
- * server action or service (Resend, Formspree…) per project.
- */
+const SERVICE_CHIPS_EN = [
+  "Visual Production & Films",
+  "Strategy & Brand Identity",
+  "Digital Growth & Paid Ads",
+  "Exhibitions & Event Booths",
+  "Motion Graphics & 3D",
+  "AI & Marketing Automation",
+  "Field Activation & Roadshows",
+  "Turnkey Integrated Solution",
+];
+
 export function ContactForm() {
   const [sent, setSent] = useState(false);
+  const { t, lang } = useTranslation();
+
+  const services = lang === "ar" ? SERVICE_CHIPS_AR : SERVICE_CHIPS_EN;
+
   const {
     register,
     handleSubmit,
@@ -38,16 +62,15 @@ export function ContactForm() {
     formState: { errors, isSubmitting },
   } = useForm<ContactValues>({
     resolver: zodResolver(contactSchema),
-    defaultValues: { budget: "" },
+    defaultValues: { service: services[0] },
   });
 
-  // useWatch (not watch()) — safe with the React Compiler
-  const budget = useWatch({ control, name: "budget" });
+  const selectedService = useWatch({ control, name: "service" });
 
   const onSubmit = async (values: ContactValues) => {
-    // Demo stub — replace with a real submission per project
-    await new Promise((r) => setTimeout(r, 1200));
-    console.info("[contact] payload ready to send:", values);
+    // Simulated smooth submission
+    await new Promise((r) => setTimeout(r, 1000));
+    console.info("[contact] message:", values);
     setSent(true);
   };
 
@@ -66,11 +89,11 @@ export function ContactForm() {
               <Check className="size-6" />
             </span>
             <h2 className="mt-8 font-display text-4xl">
-              Message received<span className="text-accent">.</span>
+              {lang === "ar" ? "تم استلام طلبك بنجاح" : "Message received"}
+              <span className="text-accent">.</span>
             </h2>
-            <p className="mt-4 max-w-md text-muted-foreground">
-              Thanks for reaching out — we read everything ourselves and usually
-              reply within two working days.
+            <p className="mt-4 max-w-md text-muted-foreground leading-relaxed">
+              {t("contact.form.success")}
             </p>
           </motion.div>
         ) : (
@@ -84,10 +107,10 @@ export function ContactForm() {
           >
             <div className="grid gap-10 sm:grid-cols-2">
               <div className="space-y-3">
-                <Label htmlFor="name">Name *</Label>
+                <Label htmlFor="name">{t("contact.form.name")} *</Label>
                 <Input
                   id="name"
-                  placeholder="Ada Lovelace"
+                  placeholder={t("contact.form.namePlaceholder")}
                   aria-invalid={!!errors.name}
                   {...register("name")}
                 />
@@ -98,11 +121,11 @@ export function ContactForm() {
                 )}
               </div>
               <div className="space-y-3">
-                <Label htmlFor="email">Email *</Label>
+                <Label htmlFor="email">{t("contact.form.email")} *</Label>
                 <Input
                   id="email"
                   type="email"
-                  placeholder="ada@company.com"
+                  placeholder={t("contact.form.emailPlaceholder")}
                   aria-invalid={!!errors.email}
                   {...register("email")}
                 />
@@ -114,53 +137,45 @@ export function ContactForm() {
               </div>
             </div>
 
-            <div className="space-y-3">
-              <Label htmlFor="company">Company</Label>
-              <Input
-                id="company"
-                placeholder="Optional"
-                {...register("company")}
-              />
-            </div>
-
             <fieldset>
               <legend className="text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-                Budget *
+                {t("contact.form.service")} *
               </legend>
-              <div className="mt-4 flex flex-wrap gap-3">
-                {BUDGETS.map((b) => (
+              <div className="mt-4 flex flex-wrap gap-2.5">
+                {services.map((item) => (
                   <button
-                    key={b}
+                    key={item}
                     type="button"
                     onClick={() =>
-                      setValue("budget", b, { shouldValidate: true })
+                      setValue("service", item, { shouldValidate: true })
                     }
-                    aria-pressed={budget === b}
+                    aria-pressed={selectedService === item}
                     data-cursor="hover"
                     className={
-                      budget === b
-                        ? "rounded-full border border-accent bg-accent px-5 py-2 text-sm text-accent-foreground"
-                        : "rounded-full border border-border px-5 py-2 text-sm text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
+                      selectedService === item
+                        ? "rounded-full border border-accent bg-accent px-4 py-2 text-xs font-medium text-accent-foreground shadow-sm"
+                        : "rounded-full border border-border bg-surface-2/40 px-4 py-2 text-xs text-muted-foreground transition-colors hover:border-accent/40 hover:text-foreground"
                     }
                   >
-                    {b}
+                    {item}
                   </button>
                 ))}
               </div>
-              {errors.budget && (
+              {errors.service && (
                 <p role="alert" className="mt-3 text-sm text-destructive">
-                  {errors.budget.message}
+                  {errors.service.message}
                 </p>
               )}
             </fieldset>
 
             <div className="space-y-3">
-              <Label htmlFor="message">Project *</Label>
+              <Label htmlFor="message">{t("contact.form.message")} *</Label>
               <Textarea
                 id="message"
-                placeholder="What are we building? Timeline, goals, references…"
+                placeholder={t("contact.form.messagePlaceholder")}
                 aria-invalid={!!errors.message}
                 {...register("message")}
+                rows={4}
               />
               {errors.message && (
                 <p role="alert" className="text-sm text-destructive">
@@ -177,10 +192,11 @@ export function ContactForm() {
             >
               {isSubmitting ? (
                 <>
-                  <Loader2 className="animate-spin" /> Sending…
+                  <Loader2 className="animate-spin" />{" "}
+                  {t("contact.form.sending")}
                 </>
               ) : (
-                "Send the brief"
+                t("contact.form.submit")
               )}
             </Button>
           </motion.form>

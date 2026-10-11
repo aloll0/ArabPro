@@ -1,3 +1,5 @@
+"use client";
+
 import { caseStudies } from "@/content/case-studies";
 import { Reveal } from "@/components/motion/reveal";
 import { SplitTextReveal } from "@/components/motion/split-text-reveal";
@@ -5,9 +7,11 @@ import { ProjectCard } from "@/components/sections/project-card";
 import { TransitionLink } from "@/components/layout/page-transition";
 import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "@/lib/i18n/context";
 
 /** Selected work — staggered editorial grid. */
 export function FeaturedWork() {
+  const { t } = useTranslation();
   const featured = caseStudies.slice(0, 4);
 
   return (
@@ -15,10 +19,10 @@ export function FeaturedWork() {
       <div className="mb-16 flex items-end justify-between gap-6">
         <div>
           <Reveal>
-            <p className="text-label mb-6">01 — Selected work</p>
+            <p className="text-label mb-6">{t("work.label")}</p>
           </Reveal>
           <SplitTextReveal as="h2" type="words" className="text-display">
-            Work that stops the scroll
+            {t("work.title")}
           </SplitTextReveal>
         </div>
         <Reveal delay={0.2} className="hidden md:block">
@@ -27,7 +31,7 @@ export function FeaturedWork() {
             data-cursor="hover"
             className="link-underline inline-flex items-center gap-2 text-label text-foreground"
           >
-            All projects <ArrowUpRight className="size-3.5" />
+            {t("work.all")} <ArrowUpRight className="size-3.5" />
           </TransitionLink>
         </Reveal>
       </div>
@@ -50,7 +54,7 @@ export function FeaturedWork() {
           data-cursor="hover"
           className="link-underline inline-flex items-center gap-2 text-label text-foreground"
         >
-          All projects <ArrowUpRight className="size-3.5" />
+          {t("work.all")} <ArrowUpRight className="size-3.5" />
         </TransitionLink>
       </Reveal>
     </section>

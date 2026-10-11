@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200">
+  <defs>
+    <radialGradient id="ga" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#c5a880" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#c5a880" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="gb" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#e5d4c0" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#e5d4c0" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.06"/></feComponentTransfer>
+    </filter>
+  </defs>
+  <rect width="1600" height="1200" fill="#0e0e11"/>
+  <circle cx="1125.688892044127" cy="981.3562886789441" r="620" fill="url(#ga)"/>
+  <circle cx="474.311107955873" cy="218.6437113210559" r="540" fill="url(#gb)"/>
+  <path d="M 200 940 Q 800 230 1400 940" fill="none" stroke="#c5a880" stroke-width="2" opacity="0.85"/>
+      <path d="M 320 1000 Q 800 390 1280 1000" fill="none" stroke="#e5d4c0" stroke-width="1" opacity="0.5"/>
+  <rect width="1600" height="1200" filter="url(#noise)"/>
+</svg>

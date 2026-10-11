@@ -8,16 +8,19 @@ import { MenuOverlay } from "@/components/layout/menu-overlay";
 
 import { FullLogo } from "@/components/ui/logo";
 
+import { useTranslation } from "@/lib/i18n/context";
+
 /**
  * Fixed navbar: wordmark left, menu trigger right.
  * The real navigation lives in the fullscreen `<MenuOverlay>`.
  */
 export function Navbar() {
   const { menuOpen, toggleMenu, setMenuOpen } = useAppStore();
+  const { t } = useTranslation();
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-[100]">
+      <header className="fixed inset-x-0 top-0 z-100">
         <div className="container-x flex h-24 items-center justify-between">
           <TransitionLink
             href="/"
@@ -42,7 +45,7 @@ export function Navbar() {
             className="group flex items-center gap-3 mix-blend-difference"
           >
             <span className="text-label text-foreground transition-colors group-hover:text-accent">
-              {menuOpen ? "Close" : "Menu"}
+              {menuOpen ? t("nav.close") : t("nav.menu")}
             </span>
             <span className="relative flex h-4 w-7 flex-col justify-between">
               <motion.span

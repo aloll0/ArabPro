@@ -1,0 +1,320 @@
+{
+  "brand": {
+    "name": "ARAB PRO",
+    "nameEn": "ARAB PRO",
+    "tagline": "We don't just make ads.. We create impact.",
+    "subTagline": "From strategy to screen, from idea to the field — everything your brand needs under one roof",
+    "description": "Saudi-based integrated solutions partner founded in 2019 in Riyadh, serving government entities, large corporations, and ambitious projects through marketing, digital solutions, commercial representation, and field activation.",
+    "location": "Riyadh, Kingdom of Saudi Arabia",
+    "email": "ceo@arabpro.agency",
+    "website": "arab-pro.sa",
+    "since": "2019"
+  },
+  "nav": {
+    "home": "Home",
+    "work": "Work",
+    "services": "Services",
+    "about": "About",
+    "scenarios": "Client Scenarios",
+    "contact": "Contact",
+    "menu": "Menu",
+    "close": "Close"
+  },
+  "identity": {
+    "title": "Identity Story & Symbol Concept",
+    "subtitle": "Rooted in authentic Saudi heritage, engineered for the 2026 future",
+    "falcon": {
+      "title": "The Falcon — Letter (ع)",
+      "desc": "Represents sharp vision, high ambition, and pride in Saudi national heritage."
+    },
+    "lines": {
+      "title": "The Three Lines — Letter (ر)",
+      "desc": "Represents trajectory, momentum, and steady progress toward sustainable impact."
+    },
+    "dot": {
+      "title": "The Dot — Letter (ب)",
+      "desc": "Represents pinpoint precision, clarity of purpose, and obsessive craft."
+    }
+  },
+  "stats": {
+    "title": "Our Journey in Numbers",
+    "subtitle": "Cumulative experience building Saudi brands and activating market presence",
+    "years": { "value": "+7", "label": "Years of Experience (Est. 2019)" },
+    "clients": {
+      "value": "+200",
+      "label": "Trusted Clients (Gov & Corporate)"
+    },
+    "campaigns": { "value": "+100", "label": "Fully Executed Campaigns" },
+    "accounts": { "value": "+300", "label": "Managed Channels & Platforms" },
+    "creative": { "value": "+3000", "label": "Creative Works Delivered" },
+    "projects": { "value": "+50", "label": "Integrated Turnkey Projects" },
+    "talents": { "value": "+500", "label": "Registered Saudi Models & Talents" }
+  },
+  "hero": {
+    "label": "Integrated Saudi Solutions Partner — Riyadh, Est. 2019",
+    "title1": "We don't just make ads..",
+    "title2": "We create impact",
+    "title3": "Under one roof",
+    "subtitle": "From strategy to screen, from idea to the field — integrated solutions serving government entities, major corporations, and ambitious initiatives.",
+    "ctaWork": "See our work",
+    "ctaContact": "Start a conversation",
+    "scroll": "Scroll"
+  },
+  "manifesto": {
+    "label": "01 — The Studio",
+    "text": "Arab Pro was founded in Riyadh to deliver world-class marketing, visual production, and digital solutions tailored to the Saudi and Gulf markets. We connect strategic insight to on-ground execution, turning message into lasting impact.",
+    "more": "Discover the Arab Pro story",
+    "tagline": "We believe attention is earned, not bought. Every project combines film-grade art direction with obsessive engineering."
+  },
+  "services": {
+    "label": "02 — Integrated Service Ecosystem",
+    "title": "Everything your brand needs... under one roof",
+    "subtitle": "Eight connected service groups assembled into the right solution for each client — instead of a fragmented vendor list.",
+    "items": [
+      {
+        "id": "01",
+        "name": "Strategy & Business",
+        "tag": "Strategy & Business",
+        "desc": "Brand strategy & positioning, market & competitor research, go-to-market (GTM) roadmap, marketing plan, business development, pricing models, and executive advisory workshops.",
+        "points": [
+          "Brand Strategy & Positioning",
+          "Market & Competitor Research",
+          "Go-to-Market Strategy (GTM)",
+          "Annual Marketing Plan & KPIs",
+          "Business Development & Pricing",
+          "Executive Workshops & Advisory"
+        ]
+      },
+      {
+        "id": "02",
+        "name": "Brand & Design",
+        "tag": "Brand & Design",
+        "desc": "Logo design & visual systems, brand guidelines, naming & tone of voice, product packaging & gift boxes, corporate collateral, and UI/UX interface systems.",
+        "points": [
+          "Logo & Visual Systems",
+          "Comprehensive Brand Guidelines",
+          "Naming & Tone of Voice",
+          "Packaging & Gift-Box Design",
+          "Print & Architectural Signage",
+          "Digital UI/UX Design Systems"
+        ]
+      },
+      {
+        "id": "03",
+        "name": "Digital Growth",
+        "tag": "Digital Growth",
+        "desc": "Technical SEO, Generative Engine Optimization (GEO for ChatGPT, Gemini, Perplexity), Paid Performance Campaigns across all platforms, Social Media Management, and Web/App development.",
+        "points": [
+          "Technical & On-Page SEO",
+          "GEO: Presence in ChatGPT & Gemini",
+          "Multi-Platform Paid Ad Management",
+          "Unified Social Media Operations",
+          "Influencer Marketing & UGC Creators",
+          "Corporate Sites, E-commerce & Apps"
+        ]
+      },
+      {
+        "id": "04",
+        "name": "Visual Production",
+        "tag": "Visual Production",
+        "desc": "TV & cinematic commercials (TVC), corporate & documentary films, reels & social UGC, product photography & 360°, and video podcasts. Directing crews, 4K/8K cinema gear, casting, and studios.",
+        "points": [
+          "Cinematic TV Commercials (TVC)",
+          "High-End Corporate & Documentary Films",
+          "Social Content, Reels & UGC",
+          "Product Videos & 360° Photography",
+          "Video Podcasts & Interviews",
+          "+500 Talent Database & Full Studios"
+        ]
+      },
+      {
+        "id": "05",
+        "name": "Motion & Animation",
+        "tag": "Motion & Animation",
+        "desc": "2D & 3D animation, logo animations, animated infographics, kinetic typography, and bespoke screen content for exhibitions, conferences, and architectural facades.",
+        "points": [
+          "Commercial & Explainer Motion",
+          "2D Character Animation",
+          "3D Space & Product Animation",
+          "Logo Animations & Kinetic Type",
+          "Visualized Data & Infographics",
+          "LED Screen & Facade Visuals"
+        ]
+      },
+      {
+        "id": "06",
+        "name": "Exhibitions & Events",
+        "tag": "Exhibitions & Events",
+        "desc": "Full booth lifecycle (3D concept, engineering, fabrication, installation, on-site operations, and dismantling). Conferences, stage AV, live broadcasting, and same-day editing.",
+        "points": [
+          "Full Booth Lifecycle: Concept to Dismantling",
+          "3D Architectural Design & Fabrication",
+          "Conference & Launch Event Management",
+          "Stage AV, Sound & Lighting Systems",
+          "Trained Uniformed Reception Crew",
+          "Live Stream & Same-Day Video Coverage"
+        ]
+      },
+      {
+        "id": "07",
+        "name": "Field Activation & Commercial Support",
+        "tag": "Field Activation & Commercial",
+        "desc": "Mall and retail activations, pop-up stores, regional roadshows, sampling kiosks, commercial representation for foreign companies, and institutional tender support.",
+        "points": [
+          "Regional Roadshow Tours",
+          "Kiosks & Sampling Activations",
+          "Temporary Pop-up Stores",
+          "Mall & Point-of-Sale Activations",
+          "Commercial Representation in KSA",
+          "Government Tender & Bid Support"
+        ]
+      },
+      {
+        "id": "08",
+        "name": "AI & Data",
+        "tag": "AI & Data",
+        "desc": "Marketing automation, 24/7 intelligent WhatsApp & AI chatbots, AI-assisted visuals and voice dubbing, live executive dashboards, and rigorous ROAS & CAC performance tracking.",
+        "points": [
+          "Marketing Automation Journeys",
+          "24/7 AI Chatbots & WhatsApp Bots",
+          "AI Visual Concepting & Dubbing",
+          "Live KPI Dashboards for Leadership",
+          "Precision ROAS & CAC Tracking",
+          "Data-Driven Continuous Optimization"
+        ]
+      }
+    ]
+  },
+  "scenarios": {
+    "label": "03 — Tailored Solutions",
+    "title": "Six Client Scenarios, One Tailored Solution for Each",
+    "subtitle": "We start from the client's actual situation, not a rigid service menu; each scenario has a primary objective, a capability mix, and clear deliverables.",
+    "items": [
+      {
+        "title": "New Project / Initiative",
+        "enTitle": "New Project / Initiative",
+        "need": "Foundation & Launch Readiness",
+        "solution": "Brand Strategy • GTM Strategy • Pricing • Visual Identity • Website Development • Launch Content"
+      },
+      {
+        "title": "Existing Business Reform",
+        "enTitle": "Existing Business Reform",
+        "need": "Repositioning & Performance Improvement",
+        "solution": "Marketing Plan • SEO • Content Development • Platform Enhancement • Brand & Messaging Refresh"
+      },
+      {
+        "title": "Launch Campaign",
+        "enTitle": "Launch Campaign",
+        "need": "Fast & Effective Market Activation",
+        "solution": "Content Production • Cinematic Shoot • Influencer Marketing • Landing Pages • Paid Performance Ads"
+      },
+      {
+        "title": "Exhibition / Event Participation",
+        "enTitle": "Exhibition / Event",
+        "need": "Strong & Immersive On-Ground Presence",
+        "solution": "Booth Design & Build • Banners & Print • Video Coverage • Conference Materials • On-site Crew"
+      },
+      {
+        "title": "Government / Tender Opportunity",
+        "enTitle": "Government / Tender",
+        "need": "Institutional Proposal & Technical Bid Support",
+        "solution": "Corporate Profile • Technical Bid Support • Case Studies • Visual Kit & Pitch Decks • Local Coordination"
+      },
+      {
+        "title": "Market Expansion",
+        "enTitle": "Market Expansion",
+        "need": "Saudi Market Entry & Strategic Partnerships",
+        "solution": "GTM Strategy • Business Development Plan • Commercial Representation • Digital Presence • Activation Campaigns"
+      }
+    ]
+  },
+  "process": {
+    "label": "04 — Our Process",
+    "title": "A Clear, Structured Five-Stage Journey",
+    "subtitle": "From idea to screen, from strategy to the field — one path, one team, and one line of responsibility.",
+    "steps": [
+      {
+        "step": "01",
+        "name": "Understand & Discover",
+        "en": "Understand",
+        "desc": "Deeply analyzing project goals, market dynamics, audience behavior, and organizational context."
+      },
+      {
+        "step": "02",
+        "name": "Define & Strategy",
+        "en": "Define",
+        "desc": "Specifying scope, measurable targets, milestones, timeline, and exact deliverables."
+      },
+      {
+        "step": "03",
+        "name": "Connect & Concept",
+        "en": "Connect",
+        "desc": "Assembling the right mix of capabilities, formulating the creative direction and narrative."
+      },
+      {
+        "step": "04",
+        "name": "Execute & Deliver",
+        "en": "Execute",
+        "desc": "Seamless multi-disciplinary execution with rigorous quality control, speed, and precision."
+      },
+      {
+        "step": "05",
+        "name": "Follow-up & Optimize",
+        "en": "Follow-up",
+        "desc": "Continuous tracking, KPI interpretation, and proactive optimization to maximize ROI."
+      }
+    ]
+  },
+  "production": {
+    "title": "Production & Field Capabilities",
+    "subtitle": "Comprehensive infrastructure ensuring every production meets world-class standards",
+    "modelsTitle": "+500 Registered 100% Saudi Models & Talents",
+    "modelsDesc": "Extensive database covering women, men, youth, seniors, families, actors, presenters, influencers, voice-over artists, and crowds with authentic national wear.",
+    "crewTitle": "Directing Crews & 4K / 8K Cinema Gear",
+    "crewDesc": "Directors, DOPs, screenwriters, audio engineers, gaffers, art directors, stylists, certified drone operators, sliders, and cinema-grade lighting.",
+    "locationsTitle": "Studios & Diverse Locations In & Out of Riyadh",
+    "locationsDesc": "Equipped cyclorama, green screen and podcast studios; indoor villas, offices, restaurants; outdoor desert, farms, heritage sites, and closed roads with permits."
+  },
+  "work": {
+    "label": "05 — Selected Work & Case Studies",
+    "title": "Work That Creates Real Impact",
+    "subtitle": "14 real Saudi projects executed with the highest level of craftsmanship and commercial return",
+    "all": "All Projects",
+    "viewProject": "View Case Study",
+    "client": "Client",
+    "year": "Year",
+    "services": "Services",
+    "challenge": "The Challenge",
+    "approach": "The Approach",
+    "results": "Results & Impact"
+  },
+  "clients": {
+    "label": "06 — Success Partners",
+    "title": "Trusted by Leading Government & Corporate Brands Across KSA & the Gulf"
+  },
+  "contact": {
+    "label": "Get in Touch",
+    "title": "Ready to turn your vision into cinematic reality and measurable impact?",
+    "subtitle": "Our creative team and production crews are fully prepared to elevate your next campaign to the highest standard.",
+    "emailLabel": "Official Email",
+    "locationLabel": "Headquarters",
+    "phoneLabel": "Official Website",
+    "form": {
+      "name": "Your Name",
+      "namePlaceholder": "Your name or organization",
+      "email": "Email Address",
+      "emailPlaceholder": "name@company.com",
+      "service": "Service or Scenario Needed",
+      "message": "Project Details",
+      "messagePlaceholder": "Tell us about your goals, timeline, and budget...",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "success": "Thank you! We received your inquiry and our team will get back to you within 24 hours."
+    }
+  },
+  "footer": {
+    "tagline": "We don't just make ads.. We create impact.",
+    "rights": "All rights reserved to ARAB PRO Agency © 2026",
+    "backToTop": "Back to top"
+  }
+}
