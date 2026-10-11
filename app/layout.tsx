@@ -32,6 +32,7 @@ const cairo = Cairo({
   display: "swap",
 });
 
+// ArabPro root metadata and layout configuration
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
